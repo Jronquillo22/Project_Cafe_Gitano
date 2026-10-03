@@ -102,7 +102,7 @@ nav {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 20px;
-  padding: 24px 20px;
+  overflow: hidden;
   box-shadow: 0 12px 30px rgba(61, 43, 36, 0.06);
 }
 
@@ -110,6 +110,28 @@ nav {
   background: linear-gradient(135deg, #3d2b24 0%, #5a3d2e 100%);
   color: #fff;
   border-color: transparent;
+}
+
+.promo-image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.promo-image-1 {
+  background-image: url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80");
+}
+
+.promo-image-2 {
+  background-image: url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80");
+}
+
+.promo-image-3 {
+  background-image: url("https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=80");
+}
+
+.promo-content {
+  padding: 24px 20px;
 }
 
 .promo-tag {
