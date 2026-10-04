@@ -73,6 +73,14 @@ nav {
   color: var(--muted);
 }
 
+nav a {
+  transition: color 180ms ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
 .hero {
   padding: 40px 0 30px;
 }
@@ -86,6 +94,31 @@ nav {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 30px;
   align-items: center;
+}
+
+.hero-text {
+  animation: fade-up 700ms ease both;
+}
+
+.hero-image {
+  animation: fade-up 850ms ease both, gentle-float 5s ease-in-out 850ms infinite;
+}
+
+.hero-image,
+.info-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image::after,
+.info-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.2) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: image-shine 1.2s ease 500ms both;
+  pointer-events: none;
 }
 
 .promotions {
@@ -104,6 +137,24 @@ nav {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 12px 30px rgba(61, 43, 36, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  animation: fade-up 650ms ease both;
+}
+
+.promo-card:nth-child(2),
+.card:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.promo-card:nth-child(3),
+.card:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.promo-card:hover,
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(61, 43, 36, 0.12);
 }
 
 .promo-feature {
@@ -116,6 +167,12 @@ nav {
   height: 180px;
   background-size: cover;
   background-position: center;
+  transition: transform 220ms ease;
+}
+
+.promo-card:hover .promo-image,
+.card:hover .card-img {
+  transform: scale(1.04);
 }
 
 .promo-image-1 {
@@ -206,6 +263,12 @@ nav {
   padding: 13px 20px;
   border-radius: 999px;
   font-weight: 700;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
 }
 
 .hero-image {
@@ -233,12 +296,16 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 8px 22px rgba(61, 43, 36, 0.04);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  animation: fade-up 650ms ease both;
 }
 
 .card-img {
   height: 180px;
   background-size: cover;
   background-position: center;
+  transition: transform 220ms ease;
 }
 
 .img-1 {
@@ -311,6 +378,14 @@ h2 {
   color: var(--brown);
 }
 
+nav a:focus-visible,
+.btn:focus-visible,
+.promo-card a:focus-visible,
+.contact a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .footer-wrap {
   display: flex;
   justify-content: space-between;
@@ -318,6 +393,35 @@ h2 {
   border-top: 1px solid var(--line);
   padding: 20px 0 40px;
   color: var(--muted);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes image-shine {
+  to {
+    transform: translateX(100%);
+  }
 }
 
 @media (max-width: 760px) {
@@ -339,5 +443,16 @@ h2 {
     justify-content: center;
     text-align: center;
     gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
