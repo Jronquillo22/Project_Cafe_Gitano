@@ -73,6 +73,14 @@ nav {
   color: var(--muted);
 }
 
+nav a {
+  transition: color 180ms ease;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
 .hero {
   padding: 40px 0 30px;
 }
@@ -104,6 +112,13 @@ nav {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 12px 30px rgba(61, 43, 36, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.promo-card:hover,
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(61, 43, 36, 0.12);
 }
 
 .promo-feature {
@@ -116,6 +131,12 @@ nav {
   height: 180px;
   background-size: cover;
   background-position: center;
+  transition: transform 220ms ease;
+}
+
+.promo-card:hover .promo-image,
+.card:hover .card-img {
+  transform: scale(1.04);
 }
 
 .promo-image-1 {
@@ -206,6 +227,12 @@ nav {
   padding: 13px 20px;
   border-radius: 999px;
   font-weight: 700;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
 }
 
 .hero-image {
@@ -233,12 +260,15 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: 0 8px 22px rgba(61, 43, 36, 0.04);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .card-img {
   height: 180px;
   background-size: cover;
   background-position: center;
+  transition: transform 220ms ease;
 }
 
 .img-1 {
@@ -309,6 +339,14 @@ h2 {
   margin-bottom: 10px;
   font-weight: 700;
   color: var(--brown);
+}
+
+nav a:focus-visible,
+.btn:focus-visible,
+.promo-card a:focus-visible,
+.contact a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .footer-wrap {
